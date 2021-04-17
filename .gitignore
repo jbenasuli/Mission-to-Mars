@@ -3,6 +3,7 @@
 
 # Local files
 local-files/
+Mars-Scraping/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
