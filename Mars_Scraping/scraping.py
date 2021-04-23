@@ -48,12 +48,12 @@ def mars_news(browser):
         # Use the parent element to find the first 'a' tag and save it as 'news_title'
         news_title = slide_elem.find('div', class_='content_title').get_text()
         # Use the parent element to find the paragraph text
-        news_paragraph = slide_elem.find('div', class_='article_teaser_body').get_text()
+        news_p = slide_elem.find('div', class_='article_teaser_body').get_text()
 
     except AttributeError:
         return None, None
 
-    return news_title, news_paragraph
+    return news_title, news_p
 
 
 def featured_image(browser):
@@ -115,12 +115,18 @@ def mars_hemispheres(browser):
         mars_child_soup = soup(html, 'html.parser')
         mars_img = mars_child_soup.find('a', text='Sample').get('href')
         return mars_img
+#       # Add try/except for error handling
+#     try:
     for description in mars_desc:
         img_title = description.find('h3').get_text()
         link_end = description.find('a').get('href')
         img_link = mars_child_page (link_end)
         full_link = f'{mars_base_url}{img_link}'
         hemisphere_image_urls.append({'img_url' : full_link, 'title' : img_title})
+#      
+#      except AttributeError:
+#        return None, None
+# 
     return hemisphere_image_urls
 if __name__ == "__main__":
 
